@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2f2f2f;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #565656;
+}
+
+/* Custom scrollbar for light mode */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Hide scrollbar for textarea */
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+/* Markdown styling */
+.prose {
+  color: inherit;
+  line-height: 1.6;
+  max-width: none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: inherit;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+
+.prose p {
+  margin-bottom: 1em;
+  color: inherit;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+  color: inherit;
+}
+
+.prose li {
+  margin-bottom: 0.25em;
+  color: inherit;
+}
+
+.prose code {
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", monospace;
+  color: inherit;
+}
+
+.prose pre {
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.prose blockquote {
+  border-left: 4px solid #3a8bfd;
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+  opacity: 0.8;
+  color: inherit;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: #3a8bfd;
+}
+
+.prose em {
+  font-style: italic;
+  color: inherit;
+}
+
+/* Dark mode specific markdown styles */
+.dark .prose code {
+  background-color: rgba(55, 65, 81, 0.3);
+  color: #e5e7eb;
+}
+
+.dark .prose pre {
+  background-color: rgba(55, 65, 81, 0.3);
+  color: #e5e7eb;
+}
+
+.dark .prose strong {
+  color: #60a5fa;
+}
+
+.dark .prose em {
+  color: #fbbf24;
+}
+
+/* Light mode specific markdown styles */
+.prose code {
+  background-color: rgba(107, 114, 128, 0.1);
+  color: #374151;
+}
+
+.prose pre {
+  background-color: rgba(107, 114, 128, 0.1);
+  color: #374151;
+}
+
+.prose strong {
+  color: #2563eb;
+}
+
+.prose em {
+  color: #7c3aed;
+}
+
+/* Toast customization */
+.Toastify__toast {
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.Toastify__progress-bar {
+  background: linear-gradient(to right, #3a8bfd, #6c5ce7);
+}
+
+/* Animation for message entry */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-enter {
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* Focus styles */
+button:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #3a8bfd;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Sidebar animations */
+@media (max-width: 768px) {
+  .sidebar-enter {
+    transform: translateX(-100%);
+  }
+
+  .sidebar-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms ease-in-out;
+  }
+
+  .sidebar-exit {
+    transform: translateX(0);
+  }
+
+  .sidebar-exit-active {
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in-out;
+  }
+}
