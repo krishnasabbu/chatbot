@@ -27,6 +27,8 @@ import { Check } from "lucide-react"
 import { PanelLeftClose } from "lucide-react"
 import { PanelLeftOpen } from "lucide-react"
 import { RefreshCw } from "lucide-react"
+import { SettingsButton } from "./SettingsButton"
+import { SettingsModal } from "./SettingsModal"
 
 interface Message {
   id: string
@@ -63,6 +65,7 @@ function ChatApp() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const abortControllerRef = useRef<AbortController | null>(null)
   const [isHydrated, setIsHydrated] = useState(false)
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
   // Load chats and theme from localStorage on mount
   useEffect(() => {
@@ -579,6 +582,7 @@ function ChatApp() {
                   <X size={16} />
                 </button>
               </div>
+              
             </div>
             <button
               onClick={createNewChat}
@@ -639,7 +643,9 @@ function ChatApp() {
           <div className="flex-1">
             <h2 className="text-lg font-semibold">{currentChat?.title || "IDPF"}</h2>
           </div>
-          <div className="w-16"></div>
+          <div className="w-16">
+            <SettingsButton onClick={() => setIsSettingsOpen(true)} theme={isDarkMode ? "dark" : "light"} />
+          </div>
         </div>
 
         {/* Messages Area */}
@@ -891,7 +897,7 @@ function ChatApp() {
           </div>
         </div>
       </div>
-
+      <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} theme={isDarkMode ? "dark" : "light"} />
       <ToastContainer
         position="top-right"
         autoClose={3000}
